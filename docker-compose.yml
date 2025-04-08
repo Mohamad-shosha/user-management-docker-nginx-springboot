@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  springboot:
+    build: .
+    container_name: springboot
+    ports:
+      - "8080:8080"
+
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - springboot
